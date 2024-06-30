@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "f1f3eb94-aad7-48bd-ad73-738131c864bf",
+		"name": "Navatar2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30209566"
+	},
+	"item": [
+		{
+			"name": "/customer/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fname\": \"Marcus\",\r\n    \"lname\": \"Stoinis\",\r\n    \"gender\": null,\r\n    \"country_code\": null,\r\n    \"zipcode\": \"42002\",\r\n    \"email\": null,\r\n    \"mobile\": null,\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://43.205.103.238:8080/customer/add"
+			},
+			"response": []
+		},
+		{
+			"name": "user/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://43.205.103.238:8080/customer/get/all"
+			},
+			"response": []
+		},
+		{
+			"name": "services/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"service_name\":\"Cooking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://43.205.103.238:8080/services/add"
+			},
+			"response": []
+		},
+		{
+			"name": "services/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://43.205.103.238:8080/services/get/all"
+			},
+			"response": []
+		},
+		{
+			"name": "services/get/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://43.205.103.238:8080/services/get/1"
+			},
+			"response": []
+		},
+		{
+			"name": "serviceprovider/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"service1_id\":1,\r\n    \"service2_id\":2,\r\n    \"service3_id\":null,\r\n    \"serviceProvider\":{\r\n        \"fname\": \"Muthanna\",\r\n        \"lname\": \"Benne\",\r\n        \"gender\": null,\r\n        \"country_code\": null,\r\n        \"pincode\": null,\r\n        \"email\": null,\r\n        \"mobile\": null,\r\n        \"lang_known\": null,\r\n        \"is_active\": false\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://43.205.103.238:8080/serviceprovider/add"
+			},
+			"response": []
+		},
+		{
+			"name": "serviceprovider/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://43.205.103.238:8080/serviceprovider/get/all"
+			},
+			"response": []
+		},
+		{
+			"name": "servicetiming/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serviceTimings\":{\r\n    \"service_day\":\"Wed\",\r\n    \"timings\":\"09:00\"\r\n    },\r\n    \"service_provider_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://43.205.103.238:8080/servicetiming/add"
+			},
+			"response": []
+		},
+		{
+			"name": "servicetiming/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://43.205.103.238:8080/servicetiming/get/all"
+			},
+			"response": []
+		},
+		{
+			"name": "appointment/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer_id\":1,\r\n\t\"service_id\":1,\r\n\t\"service_provider_id\":1,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": 0,\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null,\r\n        \"createdAt\": \"2024-06-30T11:36:13.181064\",\r\n        \"updatedAt\": \"2024-06-30T11:36:13.182077\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/appointment/add"
+			},
+			"response": []
+		},
+		{
+			"name": "appointment/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/appointment/get/all"
+			},
+			"response": []
+		}
+	]
+}
