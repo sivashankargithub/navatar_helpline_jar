@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 
 	
@@ -68,6 +69,11 @@ public class ServiceProviderController {
     @GetMapping("/serviceprovider/get/all")
     public List<ServiceProviderEntity> getAllServiceProviders() {
         return spr.findAll();
+    }
+    
+    @GetMapping("/serviceprovider/get/serviceid")
+    public List<ServiceProviderEntity>getServiceproviderByServiceId(@RequestParam int id){
+    	return spr.findServiceProviderByServiceId(id);
     }
     
     

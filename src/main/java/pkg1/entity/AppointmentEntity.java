@@ -1,6 +1,7 @@
 package pkg1.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import pkg1.enums.Connect;
 
@@ -50,6 +52,9 @@ public class AppointmentEntity {
 	@Column(name = "record_updated_on")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
+	@OneToMany(mappedBy = "appointment")
+	private List<RatingsEntity>ratings;
 	
 	public AppointmentEntity() {
 		super();

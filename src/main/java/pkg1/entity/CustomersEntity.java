@@ -23,6 +23,7 @@ public class CustomersEntity {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	private String country_code;
+	private String country_city;
 	private String zipcode;
 	private String email;
 	private String mobile;
@@ -60,6 +61,12 @@ public class CustomersEntity {
 	}
 	public void setCountry_code(String country_code) {
 		this.country_code = country_code;
+	}
+	public String getCountry_city() {
+		return country_city;
+	}
+	public void setCountry_city(String country_city) {
+		this.country_city = country_city;
 	}
 	public String getZipcode() {
 		return zipcode;
