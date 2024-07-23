@@ -31,23 +31,24 @@ public class ServiceProviderEntity {
 	private String email;
 	private String mobile;
 	private String lang_known;
+	private int fees;
 	@Column(nullable = false, columnDefinition = "TINYINT(1) default 0")
 	private boolean is_active=false;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="service1_id")
 	private ServicesEntity service1;
-	private String provider_description1;
+	private String service1_description;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="service2_id")
 	private ServicesEntity service2;
-	private String provider_description2;
+	private String service2_description;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="service3_id")
 	private ServicesEntity service3;
-	private String provider_description3;
+	private String service3_description;
 	
 	@OneToMany(mappedBy = "serviceProvider")
 	private List<ServiceTimingEntity> serviceTimingEntity;
@@ -58,29 +59,10 @@ public class ServiceProviderEntity {
 	public ServiceProviderEntity() {
 		super();
 	}
-
-	public ServiceProviderEntity(long id, String fname, String lname, Gender gender, String country_code,
-			String pincode, String email, String mobile, String lang_known, boolean is_active, ServicesEntity service1,
-			ServicesEntity service2, ServicesEntity service3) {
-		super();
-		this.id = id;
-		this.fname = fname;
-		this.lname = lname;
-		this.gender = gender;
-		this.country_code = country_code;
-		this.pincode = pincode;
-		this.email = email;
-		this.mobile = mobile;
-		this.lang_known = lang_known;
-		this.is_active = is_active;
-		this.service1 = service1;
-		this.service2 = service2;
-		this.service3 = service3;
-	}
 	
 	public ServiceProviderEntity(long id, String fname, String lname, Gender gender, String country_code,
-			String pincode, String email, String mobile, String lang_known, boolean is_active,
-			String provider_description1, String provider_description2, String provider_description3) {
+			String pincode, String email, String mobile, String lang_known, int fees, boolean is_active,
+			String service1_description, String service2_description, String service3_description) {
 		super();
 		this.id = id;
 		this.fname = fname;
@@ -91,10 +73,35 @@ public class ServiceProviderEntity {
 		this.email = email;
 		this.mobile = mobile;
 		this.lang_known = lang_known;
+		this.fees = fees;
 		this.is_active = is_active;
-		this.provider_description1 = provider_description1;
-		this.provider_description2 = provider_description2;
-		this.provider_description3 = provider_description3;
+		this.service1_description = service1_description;
+		this.service2_description = service2_description;
+		this.service3_description = service3_description;
+	}
+
+	public ServiceProviderEntity(long id, String fname, String lname, Gender gender, String country_code,
+			String pincode, String email, String mobile, String lang_known, int fees, boolean is_active,
+			ServicesEntity service1, String service1_description, ServicesEntity service2, String service2_description,
+			ServicesEntity service3, String service3_description) {
+		super();
+		this.id = id;
+		this.fname = fname;
+		this.lname = lname;
+		this.gender = gender;
+		this.country_code = country_code;
+		this.pincode = pincode;
+		this.email = email;
+		this.mobile = mobile;
+		this.lang_known = lang_known;
+		this.fees = fees;
+		this.is_active = is_active;
+		this.service1 = service1;
+		this.service1_description = service1_description;
+		this.service2 = service2;
+		this.service2_description = service2_description;
+		this.service3 = service3;
+		this.service3_description = service3_description;
 	}
 
 	public long getId() {
@@ -169,6 +176,14 @@ public class ServiceProviderEntity {
 		this.lang_known = lang_known;
 	}
 
+	public int getFees() {
+		return fees;
+	}
+
+	public void setFees(int fees) {
+		this.fees = fees;
+	}
+
 	public boolean isIs_active() {
 		return is_active;
 	}
@@ -176,13 +191,21 @@ public class ServiceProviderEntity {
 	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
-	
+
 	public ServicesEntity getService1() {
 		return service1;
 	}
 
 	public void setService1(ServicesEntity service1) {
 		this.service1 = service1;
+	}
+
+	public String getService1_description() {
+		return service1_description;
+	}
+
+	public void setService1_description(String service1_description) {
+		this.service1_description = service1_description;
 	}
 
 	public ServicesEntity getService2() {
@@ -193,6 +216,14 @@ public class ServiceProviderEntity {
 		this.service2 = service2;
 	}
 
+	public String getService2_description() {
+		return service2_description;
+	}
+
+	public void setService2_description(String service2_description) {
+		this.service2_description = service2_description;
+	}
+
 	public ServicesEntity getService3() {
 		return service3;
 	}
@@ -200,29 +231,14 @@ public class ServiceProviderEntity {
 	public void setService3(ServicesEntity service3) {
 		this.service3 = service3;
 	}
+
+	public String getService3_description() {
+		return service3_description;
+	}
+
+	public void setService3_description(String service3_description) {
+		this.service3_description = service3_description;
+	}
 	
-	public String getProvider_description1() {
-		return provider_description1;
-	}
-
-	public void setProvider_description1(String provider_description1) {
-		this.provider_description1 = provider_description1;
-	}
-
-	public String getProvider_description2() {
-		return provider_description2;
-	}
-
-	public void setProvider_description2(String provider_description2) {
-		this.provider_description2 = provider_description2;
-	}
-
-	public String getProvider_description3() {
-		return provider_description3;
-	}
-
-	public void setProvider_description3(String provider_description3) {
-		this.provider_description3 = provider_description3;
-	}
-
+	
 }

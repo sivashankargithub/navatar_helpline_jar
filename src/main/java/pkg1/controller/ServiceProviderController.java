@@ -14,15 +14,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
-
-	
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class ServiceProviderController {
-
     @Autowired
     ServiceProviderRepo spr;
 
@@ -45,10 +44,11 @@ public class ServiceProviderController {
       		   spdto.getServiceProvider().getEmail(),
       		   spdto.getServiceProvider().getMobile(),
       		   spdto.getServiceProvider().getLang_known(),
+      		   spdto.getServiceProvider().getFees(),
       		   spdto.getServiceProvider().isIs_active(),
-      		   spdto.getServiceProvider().getProvider_description1(),
-      		   spdto.getServiceProvider().getProvider_description2(),
-      		   spdto.getServiceProvider().getProvider_description3());
+      		   spdto.getServiceProvider().getService1_description(),
+      		   spdto.getServiceProvider().getService2_description(),
+      		   spdto.getServiceProvider().getService3_description());
         if(se1.isPresent()) {
      	   spe1.setService1(se1.get());
         }
@@ -76,6 +76,42 @@ public class ServiceProviderController {
     	return spr.findServiceProviderByServiceId(id);
     }
     
+    @PutMapping("/serviceprovider/update/{id}")
+    public ResponseEntity<ServiceProviderEntity> updateServiceProvider(@PathVariable long id, @RequestBody ServiceProviderDto spdto) {
+    	ServiceProviderEntity updateSP = spr.findById(id).orElseThrow(() -> new RuntimeException("Service provider not exist with id "+id));
+    	
+    	Optional<ServicesEntity> s1 = sr.findById(spdto.getService1_id());
+        Optional<ServicesEntity> s2 = sr.findById(spdto.getService2_id());
+        Optional<ServicesEntity> s3 = sr.findById(spdto.getService3_id());
+    	
+    	updateSP.setFname(spdto.getServiceProvider().getFname());
+    	updateSP.setLname(spdto.getServiceProvider().getLname());
+    	updateSP.setGender(spdto.getServiceProvider().getGender());
+    	updateSP.setCountry_code(spdto.getServiceProvider().getCountry_code());
+    	updateSP.setPincode(spdto.getServiceProvider().getPincode());
+    	updateSP.setEmail(spdto.getServiceProvider().getEmail());
+    	updateSP.setMobile(spdto.getServiceProvider().getMobile());
+    	updateSP.setLang_known(spdto.getServiceProvider().getLang_known());
+    	updateSP.setFees(spdto.getServiceProvider().getFees());
+    	updateSP.setIs_active(spdto.getServiceProvider().isIs_active());
+    	updateSP.setService1_description(spdto.getServiceProvider().getService1_description());
+    	updateSP.setService2_description(spdto.getServiceProvider().getService2_description());
+    	updateSP.setService3_description(spdto.getServiceProvider().getService3_description());
+    	
+    	if(s1.isPresent()) {
+    		updateSP.setService1(s1.get());
+         }
+         if(s2.isPresent()){
+        	 updateSP.setService2(s2.get());
+         }
+         if(s3.isPresent()){
+        	 updateSP.setService3(s3.get());
+         }
+         if(s1.isEmpty() && s2.isEmpty() && s3.isEmpty()) {
+      	   return ResponseEntity.badRequest().build();
+         }
+    	spr.save(updateSP);
+    	return ResponseEntity.ok(updateSP);
+    }
     
-
 }

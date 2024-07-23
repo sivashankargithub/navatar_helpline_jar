@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,11 +33,15 @@ public class ServicesController {
 	}
 	
 	@GetMapping("/services/get/{id}")
-	public ResponseEntity<Optional<ServicesEntity>> getServiceById(@PathVariable long id) {
-		Optional<ServicesEntity> se=sr1.findById(id);
-		if(!se.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(se);
+	public ResponseEntity<ServicesEntity> getServiceById(@PathVariable long id) {
+		ServicesEntity se=sr1.findById(id).orElseThrow(() -> new RuntimeException("Service not exist with id "+id));
+		return ResponseEntity.ok(se);
+	}
+	
+	@PutMapping("/services/update/{id}")
+	public ResponseEntity<ServicesEntity> updateServiceById(@PathVariable long id, @RequestBody ServicesEntity se1) {
+		ServicesEntity updateService=sr1.findById(id).orElseThrow(() -> new RuntimeException("Service not exist with id "+id));
+		updateService.setService_name(se1.getService_name());
+		return ResponseEntity.ok(updateService);
 	}	
 }

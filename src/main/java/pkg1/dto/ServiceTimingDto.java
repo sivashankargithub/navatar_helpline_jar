@@ -5,6 +5,7 @@ import pkg1.entity.ServiceTimingEntity;
 public class ServiceTimingDto {
 	private ServiceTimingEntity serviceTimings;
 	private long service_provider_id;
+	
 	public ServiceTimingDto(ServiceTimingEntity serviceTimings, long service_provider_id) {
 		super();
 		this.serviceTimings = serviceTimings;

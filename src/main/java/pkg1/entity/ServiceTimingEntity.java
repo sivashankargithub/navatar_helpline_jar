@@ -38,13 +38,6 @@ public class ServiceTimingEntity {
 		this.timings = timings;
 		this.serviceProvider = serviceProvider;
 	}
-	
-	public ServiceTimingEntity(long id, ServiceDays service_day, String timings) {
-		super();
-		this.id = id;
-		this.service_day = service_day;
-		this.timings = timings;
-	}
 
 	public long getId() {
 		return id;
@@ -77,5 +70,4 @@ public class ServiceTimingEntity {
 	public void setServiceProvider(ServiceProviderEntity serviceProvider) {
 		this.serviceProvider = serviceProvider;
 	}
-	
 }
