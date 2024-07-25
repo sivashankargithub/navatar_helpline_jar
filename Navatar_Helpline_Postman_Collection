@@ -89,11 +89,11 @@
 		{
 			"name": "customer/update/{id}",
 			"request": {
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fname\": \"Marcus\",\r\n    \"lname\": \"Maleria\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42004\",\r\n    \"email\": \"marcushulk@gmail.com\",\r\n    \"mobile\": \"+1222222222\",\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
+					"raw": "{\r\n    \"fname\": \"Marcus\",\r\n    \"lname\": \"Malothra\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42004\",\r\n    \"email\": \"marcushulk@gmail.com\",\r\n    \"mobile\": \"+1222222222\",\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -126,7 +126,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"service_name\":\"Cooking\"\r\n}",
+					"raw": "{\r\n    \"service_name\":\"TV Instalation\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -294,7 +294,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/serviceprovider/get/serviceid?id=1",
+					"raw": "http://43.205.103.238:8080/serviceprovider/get/serviceid?id=3",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -311,7 +311,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "3"
 						}
 					]
 				}
@@ -319,13 +319,13 @@
 			"response": []
 		},
 		{
-			"name": "serviceprovider/update/{id}",
+			"name": "serviceprovider/update/{spid}",
 			"request": {
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"service1_id\":null,\r\n    \"service2_id\":null,\r\n    \"service3_id\":3,\r\n    \"serviceProvider\":{\r\n        \"fname\": \"Sanjay\",\r\n        \"lname\": \"KM\",\r\n        \"gender\": \"male\",\r\n        \"country_code\": null,\r\n        \"pincode\": null,\r\n        \"email\": null,\r\n        \"mobile\": null,\r\n        \"lang_known\": null,\r\n        \"fees\":1,\r\n        \"is_active\": false,\r\n        \"service1_description\":\"good\",\r\n        \"service2_description\":\"good\",\r\n        \"service3_description\":\"good\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"service1_id\":1,\r\n    \"service2_id\":null,\r\n    \"service3_id\":3,\r\n    \"serviceProvider\":{\r\n        \"fname\": \"Sanjay\",\r\n        \"lname\": \"Krishna\",\r\n        \"gender\": \"male\",\r\n        \"country_code\": null,\r\n        \"pincode\": null,\r\n        \"email\": \"sanjay@gmail.com\",\r\n        \"mobile\": null,\r\n        \"lang_known\": null,\r\n        \"fees\":1,\r\n        \"is_active\": false,\r\n        \"service1_description\":\"good\",\r\n        \"service2_description\":\"good\",\r\n        \"service3_description\":\"good\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -408,12 +408,12 @@
 			"response": []
 		},
 		{
-			"name": "servicetiming/get/serviceproviderid?id=1",
+			"name": "servicetiming/get/{spid}",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/servicetiming/get/serviceproviderid?id=1",
+					"raw": "http://43.205.103.238:8080/servicetiming/get/4",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -425,13 +425,32 @@
 					"path": [
 						"servicetiming",
 						"get",
-						"serviceproviderid"
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "servicetiming/get/{spid}/{day}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/servicetiming/get/1/Mon",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
 					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
+					"port": "8080",
+					"path": [
+						"servicetiming",
+						"get",
+						"1",
+						"Mon"
 					]
 				}
 			},
@@ -479,7 +498,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer_id\":1,\r\n\t\"service_id\":1,\r\n\t\"service_provider_id\":1,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": 0,\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null,\r\n        \"createdAt\": \"2024-06-30T11:36:13.181064\",\r\n        \"updatedAt\": \"2024-06-30T11:36:13.182077\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"customer_id\":2,\r\n\t\"service_id\":2,\r\n\t\"service_provider_id\":1,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": \"pending\",\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null,\r\n        \"createdAt\": \"2024-06-30T11:36:13.181064\",\r\n        \"updatedAt\": \"2024-06-30T11:36:13.182077\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -529,13 +548,125 @@
 			"response": []
 		},
 		{
+			"name": "appointment/get/by/customer/{cid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/appointment/get/by/customer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"get",
+						"by",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "appointment/get/by/serviceprovider/{spid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/appointment/get/by/serviceprovider/1",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"get",
+						"by",
+						"serviceprovider",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "appointment/get/by/customer/{cid}/serviceprovider/{spid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/appointment/get/by/customer/1/serviceprovider/1",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"get",
+						"by",
+						"customer",
+						"1",
+						"serviceprovider",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "appointment/update/by/appointment/{aid}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n    \"issue\": null,\r\n    \"connect\": null,\r\n    \"work_status\": \"pending\",\r\n    \"payment_id\": null,\r\n    \"payment_satus\": 0,\r\n    \"payment_date\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://43.205.103.238:8080/appointment/update/by/appointment/10",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"update",
+						"by",
+						"appointment",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "ratings/add",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"appointment_id\":1,\r\n    \"ratings\":{\r\n        \"customer_rating\":0,\r\n        \"customer_description\":\"Good\",\r\n        \"service_provider_rating\":0,\r\n        \"service_provider_description\":\"Good\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"appointment_id\":10,\r\n    \"ratings\":{\r\n        \"customer_rating\":0,\r\n        \"customer_description\":\"Good\",\r\n        \"service_provider_rating\":0,\r\n        \"service_provider_description\":\"Good\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -555,6 +686,187 @@
 					"path": [
 						"ratings",
 						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/get/all",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/get/2",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/appointment/{aid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/get/appointment/10",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"appointment",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/serviceprovider/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ratings/get/serviceprovider/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"serviceprovider",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/customer/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/get/customer/1",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/get/customer/{cid}/serviceprovider/{spid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/get/customer/2/serviceprovider/1",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"get",
+						"customer",
+						"2",
+						"serviceprovider",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings/update/appointment/{aid}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer_rating\":0,\r\n    \"customer_description\":\"Very Good\",\r\n    \"service_provider_rating\":0,\r\n    \"service_provider_description\":\"Very Good\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://43.205.103.238:8080/ratings/update/appointment/10",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"ratings",
+						"update",
+						"appointment",
+						"10"
 					]
 				}
 			},

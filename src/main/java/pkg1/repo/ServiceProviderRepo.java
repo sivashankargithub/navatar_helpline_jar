@@ -10,6 +10,6 @@ import pkg1.entity.ServiceProviderEntity;
 
 public interface ServiceProviderRepo extends JpaRepository<ServiceProviderEntity,Long>{
 
-	@Query(value = "select * from service_provider where service1_id=:id or service2_id=id or service3_id=:id", nativeQuery = true)
-	List<ServiceProviderEntity>findServiceProviderByServiceId(@Param(value = "id") int id);
+	@Query(value = "select * from service_provider where service1_id=:id or service2_id=:id or service3_id=:id", nativeQuery = true)
+	List<ServiceProviderEntity>findServiceProviderByServiceId(@Param(value = "id") long id);
 }

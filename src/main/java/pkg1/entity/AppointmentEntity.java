@@ -19,6 +19,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import pkg1.enums.Connect;
+import pkg1.enums.WorkStatus;
 
 @Entity
 @Table(name="appointment")
@@ -38,10 +39,13 @@ public class AppointmentEntity {
 	
 	private LocalDateTime appointment_date_time;
 	private String issue;
+	
 	@Enumerated(EnumType.STRING)
 	private Connect connect;
-	@Column(columnDefinition = "tinyint(1) default 0")
-	private int work_status;
+	@Column(length = 32, columnDefinition = "varchar(32) default 'pending'")
+	@Enumerated(EnumType.STRING)
+	private WorkStatus work_status = WorkStatus.pending;
+	
 	private String payment_id;
 	@Column(columnDefinition = "tinyint(1) default 0")
 	private int payment_satus;
@@ -60,15 +64,11 @@ public class AppointmentEntity {
 		super();
 	}
 
-	public AppointmentEntity(long id, CustomersEntity customerEntity, ServicesEntity servicesEntity,
-			ServiceProviderEntity serviceProviderEntity, LocalDateTime appointment_date_time, String issue,
-			Connect connect, int work_status, String payment_id, int payment_satus, LocalDateTime payment_date,
+	public AppointmentEntity(long id, LocalDateTime appointment_date_time, String issue, Connect connect,
+			WorkStatus work_status, String payment_id, int payment_satus, LocalDateTime payment_date,
 			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
-		this.customerEntity = customerEntity;
-		this.servicesEntity = servicesEntity;
-		this.serviceProviderEntity = serviceProviderEntity;
 		this.appointment_date_time = appointment_date_time;
 		this.issue = issue;
 		this.connect = connect;
@@ -81,11 +81,15 @@ public class AppointmentEntity {
 	}
 	
 
-	public AppointmentEntity(long id, LocalDateTime appointment_date_time, String issue, Connect connect,
-			int work_status, String payment_id, int payment_satus, LocalDateTime payment_date, LocalDateTime createdAt,
-			LocalDateTime updatedAt) {
+	public AppointmentEntity(long id, CustomersEntity customerEntity, ServicesEntity servicesEntity,
+			ServiceProviderEntity serviceProviderEntity, LocalDateTime appointment_date_time, String issue,
+			Connect connect, WorkStatus work_status, String payment_id, int payment_satus, LocalDateTime payment_date,
+			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
+		this.customerEntity = customerEntity;
+		this.servicesEntity = servicesEntity;
+		this.serviceProviderEntity = serviceProviderEntity;
 		this.appointment_date_time = appointment_date_time;
 		this.issue = issue;
 		this.connect = connect;
@@ -152,12 +156,12 @@ public class AppointmentEntity {
 	public void setConnect(Connect connect) {
 		this.connect = connect;
 	}
-
-	public int getWork_status() {
+	
+	public WorkStatus getWork_status() {
 		return work_status;
 	}
 
-	public void setWork_status(int work_status) {
+	public void setWork_status(WorkStatus work_status) {
 		this.work_status = work_status;
 	}
 
@@ -200,4 +204,5 @@ public class AppointmentEntity {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 }

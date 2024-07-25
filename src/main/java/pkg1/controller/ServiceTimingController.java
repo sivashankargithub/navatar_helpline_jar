@@ -1,20 +1,15 @@
 package pkg1.controller;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pkg1.dto.NextWeekTimingDto;
 import pkg1.dto.ServiceTimingDto;
 import pkg1.entity.ServiceProviderEntity;
 import pkg1.entity.ServiceTimingEntity;
@@ -47,12 +42,26 @@ public class ServiceTimingController {
 		return str.findAll();
 	}
 	
-	@GetMapping("/servicetiming/get/serviceproviderid")
-	public Optional<ServiceTimingEntity> getServiceTimingsByServiceProviderId(@RequestParam long id) {
-		return str.findServiceProviderTimingsByServiceProviderId(id);
+	@GetMapping("/servicetiming/get/{spid}")
+	public ResponseEntity<List<ServiceTimingEntity>> getServiceTimingsByServiceProviderId(@PathVariable long spid) {
+		try {
+			ServiceProviderEntity getSP=spr.findById(spid).orElseThrow(() -> new IllegalArgumentException("Service provider not exist with id "+spid));
+			List<ServiceTimingEntity> getServiceTiming = str.findAllSTBySPId(getSP.getId());
+			return ResponseEntity.ok(getServiceTiming);
+		}
+		catch (IllegalArgumentException e) {
+			System.err.println("Service Provider not exist with id "+spid+" or Service Timing not exist for id "+spid);
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
-	@PutMapping("/servicetiming/update/by/serviceprovider/id")
+	@GetMapping("/servicetiming/get/{spid}/{day}")
+	public ServiceTimingEntity getSTBySPIdandDay(@PathVariable long spid, @PathVariable String day) {
+		ServiceTimingEntity getServiceTiming = str.findSPTimingsBySPId(spid,day).orElseThrow(() -> new RuntimeException("Service provider not exist with id "+spid));
+		return getServiceTiming;
+	}
+	
+	@PatchMapping("/servicetiming/update/by/serviceprovider/id/and/day")
 	public ResponseEntity<ServiceTimingEntity> updateServiceTimings(@RequestBody ServiceTimingDto stdto){
 		long spid = stdto.getService_provider_id();
 		String day = stdto.getServiceTimings().getService_day().name();

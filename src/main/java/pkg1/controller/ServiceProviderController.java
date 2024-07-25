@@ -14,10 +14,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -72,11 +72,11 @@ public class ServiceProviderController {
     }
     
     @GetMapping("/serviceprovider/get/serviceid")
-    public List<ServiceProviderEntity>getServiceproviderByServiceId(@RequestParam int id){
+    public List<ServiceProviderEntity>getServiceproviderByServiceId(@RequestParam long id){
     	return spr.findServiceProviderByServiceId(id);
     }
     
-    @PutMapping("/serviceprovider/update/{id}")
+    @PatchMapping("/serviceprovider/update/{id}")
     public ResponseEntity<ServiceProviderEntity> updateServiceProvider(@PathVariable long id, @RequestBody ServiceProviderDto spdto) {
     	ServiceProviderEntity updateSP = spr.findById(id).orElseThrow(() -> new RuntimeException("Service provider not exist with id "+id));
     	
