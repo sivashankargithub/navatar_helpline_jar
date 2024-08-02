@@ -459,11 +459,11 @@
 		{
 			"name": "servicetiming/update/by/serviceprovider/id/and/day",
 			"request": {
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"serviceTimings\":{\r\n    \"service_day\":\"Mon\",\r\n    \"timings\":\"09:00,10:00\"\r\n    },\r\n    \"service_provider_id\":1\r\n}",
+					"raw": "{\r\n    \"serviceTimings\":{\r\n    \"service_day\":\"Mon\",\r\n    \"timings\":\"02:00,13:00,14:00,12:00\"\r\n    },\r\n    \"service_provider_id\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -471,10 +471,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://l43.205.103.238:8080/servicetiming/update/by/serviceprovider/id",
+					"raw": "http://43.205.103.238:8080/servicetiming/update/by/serviceprovider/id/and/day",
 					"protocol": "http",
 					"host": [
-						"l43",
+						"43",
 						"205",
 						"103",
 						"238"
@@ -485,7 +485,9 @@
 						"update",
 						"by",
 						"serviceprovider",
-						"id"
+						"id",
+						"and",
+						"day"
 					]
 				}
 			},
@@ -498,7 +500,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer_id\":2,\r\n\t\"service_id\":2,\r\n\t\"service_provider_id\":1,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": \"pending\",\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null,\r\n        \"createdAt\": \"2024-06-30T11:36:13.181064\",\r\n        \"updatedAt\": \"2024-06-30T11:36:13.182077\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"customer_id\":7,\r\n\t\"service_id\":7,\r\n\t\"service_provider_id\":7,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-08-07T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": \"pending\",\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
