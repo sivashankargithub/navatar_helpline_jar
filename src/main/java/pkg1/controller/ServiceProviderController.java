@@ -71,6 +71,11 @@ public class ServiceProviderController {
         return spr.findAll();
     }
     
+    @GetMapping("/serviceprovider/get/{id}")
+    public Optional<ServiceProviderEntity> getServiceProviderById(@PathVariable long id) {
+        return spr.findById(id);
+    }
+    
     @GetMapping("/serviceprovider/get/serviceid")
     public List<ServiceProviderEntity>getServiceproviderByServiceId(@RequestParam long id){
     	return spr.findServiceProviderByServiceId(id);
@@ -113,5 +118,6 @@ public class ServiceProviderController {
     	spr.save(updateSP);
     	return ResponseEntity.ok(updateSP);
     }
+    
     
 }

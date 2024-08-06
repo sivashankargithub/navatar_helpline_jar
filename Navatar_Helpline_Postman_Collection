@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fname\": \"Marcus\",\r\n    \"lname\": \"Stoinis\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42002\",\r\n    \"email\": \"marcus@gmail.com\",\r\n    \"mobile\": \"+1222222222\",\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
+					"raw": "{\r\n    \"fname\": \"John\",\r\n    \"lname\": \"Doe\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42005\",\r\n    \"email\": \"john@gmail.com\",\r\n    \"mobile\": \"+124673245\",\r\n    \"lang_known\": \"EN\"\r\n  }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,7 +68,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/customer/get/2",
+					"raw": "http://43.205.103.238:8080/customer/get/8",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -80,7 +80,7 @@
 					"path": [
 						"customer",
 						"get",
-						"2"
+						"8"
 					]
 				}
 			},
@@ -93,7 +93,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fname\": \"Marcus\",\r\n    \"lname\": \"Malothra\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42004\",\r\n    \"email\": \"marcushulk@gmail.com\",\r\n    \"mobile\": \"+1222222222\",\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
+					"raw": "{\r\n    \"fname\": \"Marnus\",\r\n    \"lname\": \"Labushcane\",\r\n    \"gender\": \"male\",\r\n    \"country_code\": \"+1\",\r\n    \"zipcode\": \"42004\",\r\n    \"email\": \"marcushulk@gmail.com\",\r\n    \"mobile\": \"+1222222222\",\r\n    \"lang_known\": \"EN,HI\"\r\n  }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -126,7 +126,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"service_name\":\"TV Instalation\"\r\n}\r\n",
+					"raw": "{\r\n    \"service_name\":\"\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,15 +157,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/services/get/all",
+					"raw": "http://{{aws}}/services/get/all",
 					"protocol": "http",
 					"host": [
-						"43",
-						"205",
-						"103",
-						"238"
+						"{{aws}}"
 					],
-					"port": "8080",
 					"path": [
 						"services",
 						"get",
@@ -181,7 +177,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/services/get/1",
+					"raw": "http://43.205.103.238:8080/services/get/7",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -193,7 +189,28 @@
 					"path": [
 						"services",
 						"get",
-						"1"
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/services/get/serviceprovider/{spid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{aws}}/services/get/serviceprovider/2",
+					"protocol": "http",
+					"host": [
+						"{{aws}}"
+					],
+					"path": [
+						"services",
+						"get",
+						"serviceprovider",
+						"2"
 					]
 				}
 			},
@@ -239,7 +256,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"service1_id\":1,\r\n    \"service2_id\":2,\r\n    \"service3_id\":null,\r\n    \"serviceProvider\":{\r\n        \"fname\": \"Subramaniam\",\r\n        \"lname\": \"Badhrinath\",\r\n        \"gender\": \"male\",\r\n        \"country_code\": \"IN\",\r\n        \"pincode\": \"560099\",\r\n        \"email\": \"badri@gmail.com\",\r\n        \"mobile\": 9899870943,\r\n        \"lang_known\": \"HI,TA\",\r\n        \"fees\":1,\r\n        \"is_active\": true,\r\n        \"service1_description\":\"good\",\r\n        \"service2_description\":\"good\",\r\n        \"service3_description\":\"good\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"service1_id\":5,\r\n    \"service2_id\":6,\r\n    \"service3_id\":null,\r\n    \"serviceProvider\":{\r\n        \"fname\": \"Ganesh\",\r\n        \"lname\": \"Rao\",\r\n        \"gender\": \"male\",\r\n        \"country_code\": \"IN\",\r\n        \"pincode\": \"560099\",\r\n        \"email\": \"dube@gmail.com\",\r\n        \"mobile\": 8899760943,\r\n        \"lang_known\": \"TE,KA\",\r\n        \"fees\":1,\r\n        \"is_active\": true,\r\n        \"service1_description\":\"good\",\r\n        \"service2_description\":\"good\",\r\n        \"service3_description\":\"good\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -283,6 +300,30 @@
 						"serviceprovider",
 						"get",
 						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "serviceprovider/get/all/{spid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/serviceprovider/get/1",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"serviceprovider",
+						"get",
+						"1"
 					]
 				}
 			},
@@ -500,7 +541,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer_id\":7,\r\n\t\"service_id\":7,\r\n\t\"service_provider_id\":7,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-08-07T06:00:00\",\r\n        \"issue\": null,\r\n        \"connect\": null,\r\n        \"work_status\": \"pending\",\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null\r\n    }\r\n}",
+					"raw": "{\r\n    \"customer_id\":7,\r\n\t\"service_id\":7,\r\n\t\"service_provider_id\":7,\r\n    \"appointment\":{\r\n        \"appointment_date_time\":\"2024-08-15T06:00:00\",\r\n        \"issue\":\"MS Word is not working\" ,\r\n        \"connect\": \"videocall\",\r\n        \"work_status\": \"pending\",\r\n        \"payment_id\": null,\r\n        \"payment_satus\": 0,\r\n        \"payment_date\": null\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -550,15 +591,42 @@
 			"response": []
 		},
 		{
+			"name": "appointment/get/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://43.205.103.238:8080/appointment/get/8",
+					"protocol": "http",
+					"host": [
+						"43",
+						"205",
+						"103",
+						"238"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"get",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "appointment/get/by/customer/{cid}",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/appointment/get/by/customer/1",
+					"raw": "http://43.205.103.238:8080/appointment/get/by/customer/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"43",
+						"205",
+						"103",
+						"238"
 					],
 					"port": "8080",
 					"path": [
@@ -633,7 +701,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"appointment_date_time\":\"2024-07-01T06:00:00\",\r\n    \"issue\": null,\r\n    \"connect\": null,\r\n    \"work_status\": \"pending\",\r\n    \"payment_id\": null,\r\n    \"payment_satus\": 0,\r\n    \"payment_date\": null\r\n}",
+					"raw": "{\r\n    \"work_status\": \"finished\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -641,7 +709,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://43.205.103.238:8080/appointment/update/by/appointment/10",
+					"raw": "http://43.205.103.238:8080/appointment/update/by/appointment/15",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -655,7 +723,7 @@
 						"update",
 						"by",
 						"appointment",
-						"10"
+						"15"
 					]
 				}
 			},
@@ -794,7 +862,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://43.205.103.238:8080/ratings/get/customer/1",
+					"raw": "http://43.205.103.238:8080/ratings/get/customer/2",
 					"protocol": "http",
 					"host": [
 						"43",
@@ -807,7 +875,7 @@
 						"ratings",
 						"get",
 						"customer",
-						"1"
+						"2"
 					]
 				}
 			},
